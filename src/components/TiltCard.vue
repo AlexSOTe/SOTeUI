@@ -2,6 +2,7 @@
   <div class="TiltCard">
     <div class="tiltEle" v-tilt>
       <div class="floatCard">
+        {{name}}
       </div>
     </div>
   </div>
@@ -19,15 +20,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 2000px;
 
     .tiltEle {
       position: relative;
       width: 250px;
       height: 250px;
-      transform-style: preserve-3d;
       background-color: pink;
       border-radius: 10px;
+      perspective: 1000px;
 
       .floatCard {
         position: absolute;
@@ -38,7 +38,6 @@
         background-color: #4cff0044;
         transform: translate3d(-50%,-50%,100px);
         border: 1px solid #1e1e1e;
-        transform-style: preserve-3d;
         border-radius: 10px;
       }
     }

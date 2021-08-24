@@ -1,7 +1,14 @@
-function TiltDirective() {
+/**
+ * 使一个有宽高的元素在鼠标移入时有倾斜效果
+ * @param degreeRate 倾斜程度，默认15
+ */
+function TiltDirective(degreeRate: number = 15) {
   const name = 'tilt';
   const obj = {
     mounted(ele: HTMLElement) {
+      // 设置默认样式
+      ele.style.transformStyle = 'preserve-3d';
+      ele.style.transition = 'none';
       // 获取被绑定元素的宽高
       const eleStyle = getComputedStyle(ele);
       const eleW = parseInt(eleStyle.width);
@@ -14,12 +21,15 @@ function TiltDirective() {
         const ox = mx - (eleW / 2);
         const oy = my - (eleH / 2);
         // 好了( •̀ ω •́ )y
-        ele.style.transform = `rotateX(${-oy / 15}deg) rotateY(${ox / 15}deg)`;
+        ele.style.transform = `rotateX(${-oy / degreeRate}deg) rotateY(${ox / degreeRate}deg)`;
       }, false);
       ele.addEventListener('mouseleave', (evt: MouseEvent) => {
         // 鼠标离开元素的时候重置transform
         ele.style.transform = `rotateX(0deg) rotateY(0deg)`;
-
+        ele.style.transition = 'all ease 300ms';
+        setTimeout(() => {
+          ele.style.transition = 'none';
+        }, 300)
       }, false);
     }
   };
@@ -27,4 +37,4 @@ function TiltDirective() {
 }
 
 
-export default TiltDirective();
+export default TiltDirective;
