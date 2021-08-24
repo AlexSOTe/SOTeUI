@@ -1,5 +1,6 @@
+
 // 对外暴露的配置项
-interface ITiltOptions {
+export interface ITiltOptions {
   /**
    * 倾斜程度，推荐 10~30，越大倾斜角度越小
    */
@@ -23,7 +24,7 @@ const bindValue = {
   translateZ: '100px',
 }
 interface IBindObj {
-  value: ITiltOptions | undefined;
+  value: ITiltOptions;
   [key: string]: any;
 }
 
@@ -44,23 +45,23 @@ perspective: 1000px;
 
         // 创建内层相应鼠标动画的元素
         const card = document.createElement('div');
-        //const cardStyleCover = {
-        //  translateZ: bind.value?.translateZ ?? '100px',
-        //}
+        const cardStyleCover = {
+          translateZ: bind.value?.translateZ ?? '100px',
+        }
 
-        //        const floatDiv1 = document.createElement('div');
-        //        floatDiv1.setAttribute('style', `
-        //position: absolute;
-        //left: 50%;
-        //top: 50%;
-        //width: 100%;
-        //height: 100%;
-        //background-color: #4cff0044;
-        //transform: translate3d(-50%,-50%,${cardStyleCover.translateZ});
-        //border: 1px solid #1e1e1e;
-        //border-radius: 10px;
-        //`);
-        //        card.appendChild(floatDiv1);
+        const floatDiv1 = document.createElement('div');
+        floatDiv1.setAttribute('style', `
+position: absolute;
+left: 50%;
+top: 50%;
+width: 100%;
+height: 100%;
+background-color: #4cff0044;
+transform: translate3d(-50%,-50%,${cardStyleCover.translateZ});
+border: 1px solid #1e1e1e;
+border-radius: 10px;
+`);
+        card.appendChild(floatDiv1);
 
         this.SetEleStyle(card, bind.value || bindValue);
         this.DealEleEvent(card, bind.value || bindValue);
@@ -88,7 +89,6 @@ perspective: 1000px;
       console.log(ox, oy);
       // 好了( •̀ ω •́ )y
       card.style.transform = `rotateX(${-oy / degreeRate}deg) rotateY(${ox / degreeRate}deg)`;
-      console.log('card.style.transform', card.style.transform);
     }, false);
 
     card.addEventListener('mouseleave', (evt: MouseEvent) => {
