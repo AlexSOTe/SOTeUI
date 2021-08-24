@@ -2,6 +2,7 @@
   <div class="MyComponent">
     <TiltCard />
     <hr />
+    <!--<div v-tilt style="width:200px;height:200px;">123</div>-->
   </div>
 </template>
 
@@ -10,7 +11,8 @@
 
 </script>
 
-<style>
+<style scoped lang="scss">
   .MyComponent {
+    padding: 30px;
   }
 </style>
