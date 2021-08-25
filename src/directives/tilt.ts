@@ -86,7 +86,6 @@ border-radius: 10px;
       // 把坐标转换到lightgreen方块中间
       const ox = mx - (cardW / 2);
       const oy = my - (cardH / 2);
-      console.log(ox, oy);
       // 好了( •̀ ω •́ )y
       card.style.transform = `rotateX(${-oy / degreeRate}deg) rotateY(${ox / degreeRate}deg)`;
     }, false);

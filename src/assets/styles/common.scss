@@ -1,3 +1,5 @@
+$defaultFontColor: #eee;
+
 html, body {
   margin: 0;
   padding: 0;
@@ -5,4 +7,10 @@ html, body {
 
 body {
   background-color: #1e1e1e;
+  color: $defaultFontColor;
+  overflow: hidden;
+}
+
+button {
+  color: $defaultFontColor;
 }
