@@ -10,11 +10,12 @@
     </menu>
     <template v-if="activeName==='TiltCard'">
       <TiltCard />
-      <hr />
     </template>
     <template v-else-if="activeName==='CssHouse'">
       <CssHouse />
-      <hr />
+    </template>
+    <template v-else-if="activeName==='ClickRipple'">
+      <ClickRipple />
     </template>
   </div>
 </template>
@@ -23,6 +24,7 @@
   import { ref } from 'vue';
   import TiltCard from './TiltCard.vue';
   import CssHouse from './CssHouse.vue';
+  import ClickRipple from './ClickRipple.vue';
   interface IMenuItem {
     name: string;
     label: string;
@@ -31,15 +33,17 @@
   const menuList: Array<IMenuItem> = [
     { name: 'TiltCard', label: '倾斜卡片' },
     { name: 'CssHouse', label: 'CSS房子' },
+    { name: 'ClickRipple', label: '鼠标波纹' },
   ];
-  const activeName = ref('CssHouse');
+  const activeName = ref('ClickRipple');
   const onMenuItemClick = (item: IMenuItem) => {
     activeName.value = item.name
-    console.log(activeName.value);
+    console.log(activeName);
   }
 </script>
 
 <style scoped lang="scss">
+
   button {
     margin: 0;
     padding: 0;

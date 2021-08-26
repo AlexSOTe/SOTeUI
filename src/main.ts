@@ -1,9 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/styles/common.scss';
-import { TiltDirective } from './directives/tilt';
+import { directives } from './directives';
 
 const app = createApp(App);
-const tilt = new TiltDirective().Entry();
-app.directive(tilt.name, tilt.obj);
+//指令
+directives.map(v => app.directive(v.name, v.obj))
+
 app.mount('#app');
