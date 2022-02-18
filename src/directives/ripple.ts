@@ -12,7 +12,6 @@ export class RippleDirective {
   Entry() {
     const obj = {
       mounted: (ele: HTMLElement, bind: any) => {
-        console.log(ele);
         this.SetEleStyle(ele);
         this.DealEvent(ele);
       }
